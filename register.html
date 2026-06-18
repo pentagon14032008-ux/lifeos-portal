@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+
+    <title>
+        Life OS - Register
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="./css/register.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="background-grid"></div>
+
+    <div class="auth-container">
+
+        <div class="logo-section">
+
+            <h1>
+                Life OS
+            </h1>
+
+            <p>
+                Build your life like a "System"
+            </p>
+
+        </div>
+
+        <div class="auth-card">
+
+            <h2>
+                Create Account
+            </h2>
+
+            <form id="registerForm">
+
+                <div class="form-group">
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Full Name"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email Address"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm Password"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    type="button"
+                    id="togglePasswordBtn"
+                    class="secondary-btn"
+                >
+
+                    Show Password
+
+                </button>
+
+                <button
+                    type="submit"
+                    id="registerBtn"
+                    class="primary-btn"
+                >
+
+                    Create Account
+
+                </button>
+
+                <div class="bottom-actions">
+
+                    <button
+                        type="button"
+                        id="backToLoginBtn"
+                        class="secondary-btn"
+                    >
+
+                        Back To Login
+
+                    </button>
+
+                </div>
+
+            </form>
+
+            <div id="messageBox"></div>
+
+        </div>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="./js/auth.js"></script>
+
+</body>
+</html>

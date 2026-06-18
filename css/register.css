@@ -1,0 +1,189 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    color:white;
+    font-family:Segoe UI, sans-serif;
+    min-height:100vh;
+    overflow:hidden;
+}
+
+.background-grid{
+    position:fixed;
+    inset:0;
+
+    background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    z-index:-1;
+}
+
+.auth-container{
+
+    height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:30px;
+}
+
+.logo-section{
+    text-align:center;
+}
+
+.logo-section h1{
+
+    font-size:64px;
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.logo-section p{
+
+    color:#999;
+    font-size:18px;
+}
+
+.auth-card{
+
+    width:420px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:20px;
+
+    padding:30px;
+}
+
+.auth-card h2{
+
+    text-align:center;
+
+    margin-bottom:25px;
+}
+
+form{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:15px;
+}
+
+.form-group{
+    width:100%;
+}
+
+input{
+
+    width:100%;
+
+    padding:15px;
+
+    background:#101010;
+
+    color:white;
+
+    border:1px solid #222;
+
+    border-radius:12px;
+
+    outline:none;
+}
+
+input:focus{
+
+    border-color:#00d4ff;
+}
+
+.primary-btn{
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    background:#00d4ff;
+
+    color:black;
+
+    transition:.2s;
+}
+
+.primary-btn:hover{
+
+    opacity:.9;
+}
+
+.secondary-btn{
+
+    width:100%;
+
+    padding:12px;
+
+    background:#151515;
+
+    color:white;
+
+    border:1px solid #252525;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.secondary-btn:hover{
+
+    background:#1d1d1d;
+}
+
+.bottom-actions{
+
+    margin-top:10px;
+}
+
+#messageBox{
+
+    margin-top:15px;
+
+    text-align:center;
+
+    font-size:14px;
+
+    color:#00d4ff;
+}
+
+.success{
+
+    color:#22c55e;
+}
+
+.error{
+
+    color:#ef4444;
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LifeOS Portal</title>
+
+<meta
+    http-equiv="Cache-Control"
+    content="no-cache, no-store, must-revalidate"
+>
+
+<meta
+    http-equiv="Pragma"
+    content="no-cache"
+>
+
+<meta
+    http-equiv="Expires"
+    content="0"
+>
+
+<link rel="stylesheet" href="css/portal.css">
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<header class="header">
+    <div class="logo">
+        🏧LifeOS
+    </div>
+
+    <div class="profile-menu">
+
+        <button id="profileBtn" class="profile-btn">
+            Profile
+        </button>
+
+        <div id="profileDropdown"
+             class="profile-dropdown">
+
+           <button id="myProfileBtn">
+              My Profile
+           </button>
+
+           <button id="settingsBtn">
+              Settings
+           </button>
+
+           <button id="logoutBtn">
+              Logout
+           </button>
+
+        </div>
+
+    </div>
+</header>
+
+<div id="profileOverlay" class="profile-overlay"></div>
+
+<div id="profilePanel" class="profile-panel">
+
+    <div class="profile-top">
+
+        <div id="profileAvatar" class="profile-avatar">
+            A
+        </div>
+
+        <h2 id="profileName">
+            Loading...
+        </h2>
+
+        <p id="profileEmail">
+            Loading...
+        </p>
+
+    </div>
+
+    <div class="profile-content">
+
+        <label>
+            Display Name
+        </label>
+
+        <input
+            type="text"
+            id="profileNameInput"
+        >
+
+        <label>
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="profileEmailInput"
+            disabled
+        >
+
+        <button id="saveProfileBtn">
+            Save Changes
+        </button>
+
+    </div>
+
+</div>
+
+<main>
+
+<section class="hero">
+
+    <h1 class="lifeos-title">
+        Welcome to LifeOS
+    </h1>
+
+    <p class="subtitle">
+        Come to the pain world. Integrated by "Simple Future"
+    </p>
+
+    <div class="animated-text">
+        <span id="typing-text"></span>
+    </div>
+
+</section>
+
+<section class="core-animation">
+
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="orb orb4"></div>
+
+</section>
+
+<section class="apps">
+
+    <div class="app-card">
+
+        <h2>StartLeveling</h2>
+
+        <p>
+            Personal Growth RPG System
+        </p>
+
+        <button id="openSL">
+            Open
+        </button>
+
+    </div>
+
+    <div class="app-card">
+
+        <h2>Trading Base</h2>
+
+        <p>
+            Professional Trading System
+        </p>
+
+        <button id="openTB">
+            Open
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    LifeOS v1.0.  All rights reserved by Life OS.  Contact us: Pentagon14032008@gmail.com   🔗https://t.me/+KMbX3S80UIkzMWQ6
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/auth.js"></script>
+
+<script src="js/portal.js"></script>
+
+</body>
+</html>
