@@ -77,6 +77,86 @@ changeText();
 
 setInterval(changeText,3000);
 
+let portalProfileSync = null;
+
+function renderPortalProfile(profile) {
+
+    if (!profile) {
+        return;
+    }
+
+    const profileName =
+        document.getElementById(
+            "profileName"
+        );
+
+    const profileEmail =
+        document.getElementById(
+            "profileEmail"
+        );
+
+    const profileNameInput =
+        document.getElementById(
+            "profileNameInput"
+        );
+
+    const profileEmailInput =
+        document.getElementById(
+            "profileEmailInput"
+        );
+
+    const profileAvatar =
+        document.getElementById(
+            "profileAvatar"
+        );
+
+    const displayName =
+        profile.display_name ||
+        profile.email ||
+        "LifeOS User";
+
+    const email =
+        profile.email ||
+        "";
+
+    const avatar =
+        displayName
+            .charAt(0)
+            .toUpperCase();
+
+    if(profileName){
+        profileName.textContent =
+        displayName;
+    }
+
+    if(profileEmail){
+        profileEmail.textContent =
+        email;
+    }
+
+    if(profileNameInput){
+        profileNameInput.value =
+        displayName;
+    }
+
+    if(profileEmailInput){
+        profileEmailInput.value =
+        email;
+    }
+
+    if(profileAvatar){
+        profileAvatar.textContent =
+        avatar;
+    }
+}
+
+const initialPortalProfile =
+readProfileCache();
+
+if(initialPortalProfile){
+    renderPortalProfile(initialPortalProfile);
+}
+
 const profileBtn =
 document.getElementById("profileBtn");
 
@@ -231,66 +311,27 @@ async function loadUserProfile() {
     }
 
     const user = data.user;
+    const userId = user.id;
 
-    const displayName =
-        user.user_metadata?.full_name ||
-        "LifeOS User";
+    portalProfileSync = new ProfileSync(userId);
 
-    const email =
-        user.email || "";
+    window.addEventListener(
+        "profileUpdated",
+        (event) => {
+            renderPortalProfile(event.detail);
+        }
+    );
 
-    const avatar =
-        displayName.charAt(0).toUpperCase();
+    await loadProfile(portalProfileSync);
 
-    const profileName =
-        document.getElementById(
-            "profileName"
-        );
-
-    const profileEmail =
-        document.getElementById(
-            "profileEmail"
-        );
-
-    const profileNameInput =
-        document.getElementById(
-            "profileNameInput"
-        );
-
-    const profileEmailInput =
-        document.getElementById(
-            "profileEmailInput"
-        );
-
-    const profileAvatar =
-        document.getElementById(
-            "profileAvatar"
-        );
-
-    if(profileName){
-        profileName.textContent =
-        displayName;
-    }
-
-    if(profileEmail){
-        profileEmail.textContent =
-        email;
-    }
-
-    if(profileNameInput){
-        profileNameInput.value =
-        displayName;
-    }
-
-    if(profileEmailInput){
-        profileEmailInput.value =
-        email;
-    }
-
-    if(profileAvatar){
-        profileAvatar.textContent =
-        avatar;
-    }
+    window.addEventListener(
+        "focus",
+        () => {
+            if (portalProfileSync) {
+                loadProfile(portalProfileSync);
+            }
+        }
+    );
 
 }
 
@@ -307,54 +348,25 @@ if(saveProfileBtn){
         "click",
         async () => {
 
-            const { data } =
-            await supabaseClient.auth.getUser();
-
-            if(!data.user){
+            if(!portalProfileSync){
                 return;
             }
-
-            const user =
-            data.user;
 
             const displayName =
             document.getElementById(
                 "profileNameInput"
             ).value.trim();
 
-            const { error } =
-            await supabaseClient
-            .from("profiles")
-            .upsert({
-                id: user.id,
-                email: user.email,
-                display_name: displayName,
-                updated_at:
-                new Date().toISOString()
+            const success = await portalProfileSync.updateProfile({
+                display_name: displayName
             });
 
-            if(error){
-
-                console.error(error);
-
+            if(!success){
                 alert(
                     "Profile save failed"
                 );
-
                 return;
             }
-
-            document.getElementById(
-                "profileName"
-            ).textContent =
-            displayName;
-
-            document.getElementById(
-                "profileAvatar"
-            ).textContent =
-            displayName
-            .charAt(0)
-            .toUpperCase();
 
             alert(
                 "Profile updated successfully"
