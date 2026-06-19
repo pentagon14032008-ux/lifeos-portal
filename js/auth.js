@@ -338,3 +338,9 @@ window.addEventListener(
 
     }
 );
+
+window.supabaseClient = supabaseClient;
+
+window.initSupabaseClient = function () {
+    return supabaseClient;
+};
